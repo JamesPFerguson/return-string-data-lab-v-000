@@ -22,5 +22,22 @@ class ProductsController < ApplicationController
       render plain: false
     end
   end
-  
+
+  def description
+    product = Product.find(params[:id])
+    render plain: product.description
+  end
+
+
+  def body
+    product = Product.find(params[:id])
+    render plain: product.description
+  end
+
+  private
+
+  def product_params
+    params.require(:product).permit(:name, :price, :inventory, :description)
+  end
+
 end
